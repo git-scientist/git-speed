@@ -23,6 +23,7 @@ def error(msg: str):
 def install():
     installer.install()
     success("Install Success.")
+    info("Run `source ~/.bashrc` or restart Bash to use your new Git aliases.")
 
 
 @app.callback()
