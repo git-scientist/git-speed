@@ -61,7 +61,7 @@ parse_git_dirty() {
 
 # Added by git-speed
 parse_git_branch() {
-    echo "($(git rev-parse --abbrev-ref HEAD)$(parse_git_dirty))"
+    echo "($(git rev-parse --abbrev-ref HEAD 2> /dev/null)$(parse_git_dirty))"
 }
 
 # Added by git-speed
