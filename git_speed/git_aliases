@@ -1,0 +1,23 @@
+current_git_branch() {
+    git rev-parse --abbrev-ref HEAD
+}
+
+alias ga="git add"
+alias gb="git branch"
+alias gc="git commit -v"
+alias gc!="git commit -v --amend"
+alias gca="git commit --all"
+alias gca!="git commit --all --amend"
+alias gcb="git checkout -b"
+alias gcm="git checkout master"
+alias gco="git checkout"
+alias gclean="git branch --merged | grep -v master | xargs git branch -d"
+alias gd="git diff"
+alias gdm="git diff master"
+alias gl="git log"
+alias gp="git push"
+alias gpf="git push --force"
+alias gpsup="git push --set-upstream origin \$(current_git_branch)"
+alias gpu="git pull --rebase"
+alias grm="git rebase -i master"
+alias gs="git status"
