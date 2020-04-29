@@ -28,8 +28,8 @@ def install():
         f.write(
             f"""
 # Added by git-speed
-if [ -f {ALIAS_INSTALL_PATH} ]; then
-    . {ALIAS_INSTALL_PATH}
+if [ -f ~/.git_aliases ]; then
+    . ~/.git_aliases
 fi
 """
         )
