@@ -70,9 +70,9 @@ if [ "$color_prompt" = yes ]; then
     dir_style='01;34m'
     git_style='01;33m'
     term_char='$'
-    PS1="${debian_chroot:+($debian_chroot)}\[\033[$user_style\]\u@\h\[\033[00m\]:\[\\033[$dir_style\]\w\[\033[$git_style\]\$(parse_git_branch)\[\033[00m\]\n$term_char "
+    PS1="${debian_chroot:+($debian_chroot)}\[\033[$user_style\]\u@\h\[\033[00m\]:\[\\033[$dir_style\]\w\[\033[$git_style\]\$(parse_git_branch)\[\033[00m\]"$'\n'"$term_char "
 else
-    PS1="${debian_chroot:+($debian_chroot)}\u@\h:\w\$(parse_git_branch)\n\$ "
+    PS1="${debian_chroot:+($debian_chroot)}\u@\h:\w\$(parse_git_branch)"$'\n'"\$ "
 fi
 unset color_prompt
 """
