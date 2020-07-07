@@ -2,7 +2,7 @@
 name = "git-speed"
 version = "1.0.0"
 description = "Installs Git aliases."
-authors = ["Daniel Tipping <daniel@oldreliable.tech>"]
+authors = ["Daniel Tipping <daniel@gitscientist.com>"]
 license = "MIT"
 readme = "README.md"
 homepage = "https://www.gitscientist.com"
