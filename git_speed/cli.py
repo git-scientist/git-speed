@@ -26,6 +26,13 @@ def install():
     info("Run `source ~/.bashrc` or restart Bash to use your new Git aliases.")
 
 
+@app.command()
+def uninstall():
+    installer.uninstall()
+    success("Uninstall Success.")
+    info("Run `source ~/.bashrc` or restart Bash for the changes to take effect.")
+
+
 @app.callback()
 def version_callback(value: bool):
     if value:

@@ -1,3 +1,6 @@
+# Added by git-speed
+# See https://pypi.org/project/git-speed/ for more information.
+
 current_git_branch() {
     git rev-parse --abbrev-ref HEAD
 }
