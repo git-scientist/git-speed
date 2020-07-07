@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "git-speed"
-version = "1.0.0"
+version = "1.0.1"
 description = "Installs Git aliases."
 authors = ["Daniel Tipping <daniel@gitscientist.com>"]
 license = "MIT"
