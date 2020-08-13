@@ -2,8 +2,10 @@ import os
 import typer
 import shutil
 import pathlib
+import subprocess
 
 from git_speed import cli
+from subprocess import PIPE
 
 HOME = str(pathlib.Path.home())
 ALIAS_INSTALL_PATH = HOME + "/.git_aliases"
@@ -36,6 +38,33 @@ def install():
     alias_dir = os.path.dirname(os.path.abspath(__file__))
     cli.info(f"Installing Git aliases to {ALIAS_INSTALL_PATH}")
     shutil.copyfile(alias_dir + "/git_aliases", ALIAS_INSTALL_PATH)
+
+    # Check for Ghostscript
+    res = subprocess.run(["gs", "--help"], stdout=PIPE, stderr=PIPE)
+    stdout = res.stdout.decode("utf-8").strip().lower()
+    alt_status = False
+    if res.returncode == 0 and "ghostscript" in stdout:
+        alt_status = typer.confirm(
+            "It looks like you have Ghostscript installed.\n"
+            "Would you like to use the alternate alias `gst` for `git status` instead of the default `gs`?",
+            default=True,
+        )
+
+    if alt_status:
+        with open(ALIAS_INSTALL_PATH, "r") as f:
+            lines = f.readlines()
+
+        out = []
+        for line in lines:
+            if line == 'alias gs="git status"\n':
+                out.append('#alias gs="git status"\n')
+            elif line == '#alias gst="git status"\n':
+                out.append('alias gst="git status"\n')
+            else:
+                out.append(line)
+
+        with open(ALIAS_INSTALL_PATH, "w") as f:
+            f.writelines(out)
 
     with open(BASHRC, "a") as f:
         f.write(

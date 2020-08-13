@@ -24,3 +24,5 @@ alias gpsup="git push --set-upstream origin \$(current_git_branch)"
 alias gpu="git pull --rebase"
 alias grm="git rebase -i master"
 alias gs="git status"
+# Use the alternative git status alias if you use Ghostscript
+#alias gst="git status"
