@@ -1,6 +1,6 @@
 check:
-	poetry run mypy **/*.py
-	poetry run pytype **/*.py
+	poetry run mypy git_speed tests
+	poetry run pytype git_speed tests
 	poetry run pytest
 
 test:
