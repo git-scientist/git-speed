@@ -40,15 +40,18 @@ def install():
     shutil.copyfile(alias_dir + "/git_aliases", ALIAS_INSTALL_PATH)
 
     # Check for Ghostscript
-    res = subprocess.run(["gs", "--help"], stdout=PIPE, stderr=PIPE)
-    stdout = res.stdout.decode("utf-8").strip().lower()
     alt_status = False
-    if res.returncode == 0 and "ghostscript" in stdout:
-        alt_status = typer.confirm(
-            "It looks like you have Ghostscript installed.\n"
-            "Would you like to use the alternate alias `gst` for `git status` instead of the default `gs`?",
-            default=True,
-        )
+    try:
+        res = subprocess.run(["gs", "--help"], stdout=PIPE, stderr=PIPE)
+        stdout = res.stdout.decode("utf-8").strip().lower()
+        if res.returncode == 0 and "ghostscript" in stdout:
+            alt_status = typer.confirm(
+                "It looks like you have Ghostscript installed.\n"
+                "Would you like to use the alternate alias `gst` for `git status` instead of the default `gs`?",
+                default=True,
+            )
+    except:
+        pass
 
     if alt_status:
         with open(ALIAS_INSTALL_PATH, "r") as f:
